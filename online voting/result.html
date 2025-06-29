@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Election Results - Winners</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #333;
+      color: white;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🏆 Election Winners by Constituency</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>District</th>
+        <th>Constituency</th>
+        <th>Winner</th>
+        <th>Party</th>
+        <th>Votes</th>
+      </tr>
+    </thead>
+    <tbody id="results-body">
+      <!-- Results will be injected here -->
+    </tbody>
+  </table>
+
+  <script>
+    fetch('http://localhost:3000/election-winners')
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById('results-body');
+        tbody.innerHTML = '';
+
+        data.forEach(candidate => {
+          const row = `
+            <tr>
+              <td>${candidate.district}</td>
+              <td>${candidate.constituency}</td>
+              <td>${candidate.name}</td>
+              <td>${candidate.party}</td>
+              <td>${candidate.votes}</td>
+            </tr>
+          `;
+          tbody.innerHTML += row;
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching results:', error);
+        document.getElementById('results-body').innerHTML = '<tr><td colspan="5">Error loading results.</td></tr>';
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | SecureVote</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #2a35a7, #6673d8, #3949ab);
+      overflow: hidden;
+    }
+
+    .bg-animation:before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: 100px;
+      opacity: 0.1;
+      animation: animateBg 60s linear infinite;
+      transform: rotate(30deg);
+    }
+
+    @keyframes animateBg {
+      0% {
+        transform: translateX(0) translateY(0) rotate(30deg);
+      }
+      100% {
+        transform: translateX(-50%) translateY(-50%) rotate(30deg);
+      }
+    }
+
+    .floating-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .floating-icons div {
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 60px;
+      opacity: 0.1;
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+    }
+
+    .floating-icons div:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(2) {
+      left: 10%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(3) {
+      left: 70%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 4s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(4) {
+      left: 40%;
+      width: 50px;
+      height: 50px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(5) {
+      left: 65%;
+      width: 70px;
+      height: 70px;
+      animation-delay: 0s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(6) {
+      left: 75%;
+      width: 45px;
+      height: 45px;
+      animation-delay: 3s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(7) {
+      left: 35%;
+      width: 55px;
+      height: 55px;
+      animation-delay: 7s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    .floating-icons div:nth-child(8) {
+      left: 50%;
+      width: 65px;
+      height: 65px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/159/159278.png');
+      background-size: contain;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 50px;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .form-container, .info-container {
+      background: rgba(48, 58, 178, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      flex: 1;
+      min-width: 300px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-container:hover, .info-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ffffff, #64b5f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #bbdefb;
+    }
+
+    p {
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin: 15px 0;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.9);
+      transition: all 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      background: rgba(255,255,255,1);
+      box-shadow: 0 0 10px rgba(100, 181, 246, 0.7);
+    }
+
+    .input-error {
+      box-shadow: 0 0 10px rgba(244, 67, 54, 0.7);
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .error-message {
+      color: #ffcdd2;
+      font-size: 0.8rem;
+      margin-top: -10px;
+      display: none;
+    }
+
+    form button {
+      background: linear-gradient(135deg, #2196f3, #1976d2);
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    form button:hover {
+      background: linear-gradient(135deg, #1976d2, #194fa0);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+    }
+
+    form button:active {
+      transform: translateY(1px);
+    }
+
+    form button::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    form button:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(20, 20);
+        opacity: 0;
+      }
+    }
+
+    .social-icons {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    .social-icons a::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    .social-icons a:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
+    }
+
+    .social-icons a img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .success-message {
+      display: none;
+      background: rgba(76, 175, 80, 0.9);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: rgba(33, 150, 243, 0.8);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: rgba(33, 150, 243, 1);
+      transform: translateY(-5px);
+    }
+
+    .back-to-top img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        padding: 30px 15px;
+      }
+      
+      .form-container, .info-container {
+        min-width: 100%;
+      }
+
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-animation">
+    <div class="floating-icons">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="contact-container">
+    <div class="form-container">
+      <h2>Get in Touch</h2>
+      <p>We'd love to hear from you about our secure online voting platform! 💬</p>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <div class="error-message" id="nameError">Please enter your name</div>
+        
+        <input type="email" id="email" placeholder="Your Email" required />
+        <div class="error-message" id="emailError">Please enter a valid email</div>
+        
+        <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
+        <div class="error-message" id="messageError">Please enter your message</div>
+        
+        <button type="submit" id="submitBtn">Send Message 🚀</button>
+        <div class="success-message" id="successMessage">
+          Thank you! Your message has been sent successfully.
+        </div>
+      </form>
+    </div>
+    <div class="info-container">
+      <h3>SecureVote</h3>
+      <p>📍 Vignan'S Institute of Information Technology,Beside Vsez, Duvvada,Vepz (Post),Gajuwaka,Visakhapatnam-530049. Visakhapatnam Andhra Pradesh Vishakhapatnam India </p>
+      <a href="onlinesecurevote@gmail.com" style="text-decoration: none;"><p>📧 onlinesecurevote@gmail.com</p></a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/" aria-label="Facebook" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+        <a href="https://twitter.com/" aria-label="Twitter" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
+        <a href="https://in.linkedin.com/" aria-label="LinkedIn" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn" /></a>
+        <a href="https://github.com/" aria-label="GitHub" class="social-btn"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" /></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-top" id="backToTop">
+    <img src="https://cdn-icons-png.flaticon.com/512/892/892692.png" alt="Back to top" />
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Form validation and submission
+      const contactForm = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('successMessage');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Reset errors
+        document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('input, textarea').forEach(el => el.classList.remove('input-error'));
+        
+        // Validate form
+        let isValid = true;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        if (!name) {
+          document.getElementById('nameError').style.display = 'block';
+          document.getElementById('name').classList.add('input-error');
+          isValid = false;
+        }
+        
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          document.getElementById('emailError').style.display = 'block';
+          document.getElementById('email').classList.add('input-error');
+          isValid = false;
+        }
+        
+        if (!message) {
+          document.getElementById('messageError').style.display = 'block';
+          document.getElementById('message').classList.add('input-error');
+          isValid = false;
+        }
+        
+        if (isValid) {
+          // Simulate form submission
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending...';
+          
+          // In a real app, you would send the data to a server here
+          setTimeout(() => {
+            successMessage.style.display = 'block';
+            contactForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message 🚀';
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.style.display = 'none';
+            }, 5000);
+          }, 1500);
+        }
+      });
+      
+      // Back to top button
+      const backToTopBtn = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Social button ripple effects
+      document.querySelectorAll('.social-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Create ripple element
+          const ripple = document.createElement('span');
+          ripple.classList.add('ripple-effect');
+          this.appendChild(ripple);
+          
+          // Get click position
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          // Position ripple
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          
+          // Remove ripple after animation
+          setTimeout(() => {
+            ripple.remove();
+          }, 1000);
+        });
+      });
+      
+      // Add ripple effect to form button
+      submitBtn.addEventListener('click', function(e) {
+        // This is handled by the CSS :focus:not(:active) pseudo-class
+      });
+      
+      // Smooth hover effects for containers
+      document.querySelectorAll('.form-container, .info-container').forEach(container => {
+        container.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+          this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.4)';
+        });
+        
+        container.addEventListener('mouseleave', function() {
+          this.style.transform = '';
+          this.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+        });
+      });
+      
+      // Add animation to inputs when focused
+      document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('focus', function() {
+          this.style.boxShadow = '0 0 10px rgba(100, 181, 246, 0.7)';
+        });
+        
+        input.addEventListener('blur', function() {
+          this.style.boxShadow = '';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
